@@ -1,0 +1,81 @@
+[System]
+Name='zmywarka'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=3
+NumRules=18
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='czas'
+Range=[0.5 3]
+NumMFs=3
+MF1='krotko':'trapmf',[0.5 0.5 1 1.4]
+MF2='srednio':'trapmf',[1 1.4 2 2.4]
+MF3='dlugo':'trapmf',[2.1 2.5 3 3]
+
+[Input2]
+Name='st_zabrudzenia'
+Range=[0 3]
+NumMFs=3
+MF1='pierwszy':'trimf',[0 0 1.4]
+MF2='drugi':'trimf',[0.8 1.5 2.2]
+MF3='trzeci':'trimf',[1.6 3 3]
+
+[Input3]
+Name='wielkosc_wsadu'
+Range=[0 100]
+NumMFs=2
+MF1='czesc':'trapmf',[0 0 65 100]
+MF2='max':'trimf',[75 100 100]
+
+[Output1]
+Name='ilosc_detergentu'
+Range=[15 50]
+NumMFs=3
+MF1='malo':'trapmf',[15 15 18 24]
+MF2='srednio':'trapmf',[20 25 35 45]
+MF3='duzo':'trapmf',[37 45 50 50]
+
+[Output2]
+Name='temperatura'
+Range=[35 75]
+NumMFs=4
+MF1='niska':'trapmf',[35 35 40 45]
+MF2='srednia':'trapmf',[40 45 50 60]
+MF3='wysoka':'trapmf',[50.0308404009252 60.0308404009252 65.0308404009252 70.0308404009252]
+MF4='bardzo_wysoka':'trapmf',[65 70 75 75]
+
+[Output3]
+Name='ilosc_wody'
+Range=[5 15]
+NumMFs=4
+MF1='malo':'trimf',[5 5 6.5]
+MF2='srednio':'trimf',[6 8 10]
+MF3='duzo':'trimf',[9 11 13.5]
+MF4='bardzo_duzo':'trimf',[12 15 15]
+
+[Rules]
+1 1 1, 1 2 1 (1) : 1
+1 1 2, 2 2 2 (1) : 1
+1 2 1, 2 3 2 (1) : 1
+1 2 2, 3 4 3 (1) : 1
+1 3 1, 2 4 3 (1) : 1
+1 3 2, 3 4 4 (1) : 1
+2 1 1, 1 1 1 (1) : 1
+2 1 2, 1 2 3 (1) : 1
+2 2 1, 2 3 2 (1) : 1
+2 2 2, 2 3 3 (1) : 1
+2 3 1, 2 4 3 (1) : 1
+2 3 2, 3 4 4 (1) : 1
+3 1 1, 1 1 1 (1) : 1
+3 1 2, 1 1 2 (1) : 1
+3 2 1, 2 2 1 (1) : 1
+3 2 2, 2 2 2 (1) : 1
+3 3 1, 2 3 3 (1) : 1
+3 3 2, 3 4 3 (1) : 1
